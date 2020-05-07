@@ -10,14 +10,9 @@ use std::time;
 use std::sync::Arc;
 use vulkano::image::ImageViewAccess;
 use vulkano::descriptor::PipelineLayoutAbstract;
-
-
-macro_rules! prn {
-    ($item:expr) => {
-        println!("{}", $item)
-    }
-}
-
+use vulkano::format::Format;
+use vulkano::image::Dimensions;
+use vulkano::image::StorageImage;
 
 
 pub fn main() {

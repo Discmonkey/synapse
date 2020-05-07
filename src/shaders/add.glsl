@@ -2,12 +2,15 @@
 
 layout(local_size_x = 64, local_size_y = 1, local_size_z = 1) in;
 
-layout(set = 0, binding = 0) buffer Data {
-    uint data_a[];
-    uint data_b[];
-} buffers;
+layout(set = 0, binding = 0) buffer Source {
+    uint data[];
+} buffer_a;
+
+layout(set = 1, binding = 0) buffer Target {
+    uint data[];
+} buffer_b;
 
 void main() {
     uint idx = gl_GlobalInvocationID.x;
-    buffers.data_b[idx] = buffers.data_a[idx] + buffers.data_b[idx];
+    buffer_b.data[idx] += buffer_a.data[idx];
 }
