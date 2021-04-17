@@ -115,9 +115,13 @@ pub fn main() {
     // great now we create a command buffer, in this case we "dispatch" the pipeline
     // and also so the first parameter tod ispatch is the big mystery, wtf is it doing?
     // is that the number of "work groups needed"?
-    let command_buffer = AutoCommandBufferBuilder::new(device.clone(), queue.family()).unwrap()
-        .dispatch([1024 / 8, 1024 / 8, 1], compute_pipeline.clone(), set.clone(), ()).unwrap()
+    let command_buffer = AutoCommandBufferBuilder::new(device.clone(),
+                                                       queue.family()).unwrap()
+        .dispatch([1024 / 8, 1024 / 8, 1],
+                  compute_pipeline.clone(), set.clone(), ()).unwrap()
+
         .copy_image_to_buffer(image.clone(), buf.clone()).unwrap()
+
         .build().unwrap();
 
     // easy enough get a handle to the pipeline
